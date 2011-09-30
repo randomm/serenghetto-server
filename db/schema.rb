@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110930093939) do
+ActiveRecord::Schema.define(:version => 20110930123830) do
+
+  create_table "user_locations", :options=>'ENGINE=MyISAM', :force => true do |t|
+    t.point    "geom",       :limit => nil, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "user_locations", ["geom"], :name => "index_user_locations_on_geom", :spatial => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

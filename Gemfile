@@ -47,6 +47,3 @@ gem "spatial_adapter"
 
 # add mysql
 gem "mysql", ">= 2.8.1"
-
-# add uuidtools
-gem "uuidtools", ">= 2.1.2"
