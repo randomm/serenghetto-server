@@ -47,3 +47,6 @@ gem "spatial_adapter"
 
 # add mysql
 gem "mysql", ">= 2.8.1"
+
+# add cancan
+gem "cancan", ">=1.6.6"
