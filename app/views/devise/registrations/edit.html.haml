@@ -1,5 +1,4 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
+%h2 Edit #{resource_name.to_s.humanize}
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
   = devise_error_messages!
   %p
@@ -25,7 +24,24 @@
     %br/
     = f.password_field :current_password
   %p= f.submit "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete}.
-= link_to "Back", :back
+
+
+  %h3 Token authentication
+  %p
+    = f.label :token_authentication_key
+    %br/
+    = resource.authentication_token.blank? ? "Token Empty" : resource.authentication_token
+  %p
+    = link_to "Generate Token", token_authentications_path(:user_id => resource.id), :method => :post, :confirm => "Are you sure?"
+    = link_to "Delete Token", token_authentications_path(:user_id => resource.id), :method => :delete, :confirm => "Are you sure?"
+
+  - if resource.authentication_token
+    %p 
+      You can use this url to login
+      %br/
+      = link_to "http://localhost:3000#{root_path(:auth_token => resource.authentication_token)}", root_path(:auth_token => resource.authentication_token)
+
+  %h3 Cancel my account
+  %p
+    Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete}.
+  = link_to "Back", :back

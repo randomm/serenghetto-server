@@ -50,3 +50,7 @@ gem "mysql", ">= 2.8.1"
 
 # add cancan
 gem "cancan", ">=1.6.6"
+
+# add cucumber-api-steps and jsonpath for API acceptance testing
+gem 'cucumber-api-steps', :group => :test, :require => false
+gem 'jsonpath', :group => :test

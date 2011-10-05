@@ -1,26 +1,26 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
-guard 'bundler' do
-  watch('Gemfile')
-  # Uncomment next line if Gemfile contain `gemspec' command
-  # watch(/^.+\.gemspec/)
-end
+#guard 'bundler' do
+#  watch('Gemfile')
+#  # Uncomment next line if Gemfile contain `gemspec' command
+#  # watch(/^.+\.gemspec/)
+#end
 
-guard 'rails' do
-  watch('Gemfile.lock')
-  watch(%r{^(config|lib)/.*})
-end
+#guard 'rails' do
+#  watch('Gemfile.lock')
+#  watch(%r{^(config|lib)/.*})
+#end
 
 
-guard 'livereload' do
-  watch(%r{app/.+\.(erb|haml)})
-  watch(%r{app/helpers/.+\.rb})
-  watch(%r{(public/|app/assets).+\.(css|js|html)})
-  watch(%r{(app/assets/.+\.css)\.s[ac]ss}) { |m| m[1] }
-  watch(%r{(app/assets/.+\.js)\.coffee}) { |m| m[1] }
-  watch(%r{config/locales/.+\.yml})
-end
+#guard 'livereload' do
+#  watch(%r{app/.+\.(erb|haml)})
+#  watch(%r{app/helpers/.+\.rb})
+#  watch(%r{(public/|app/assets).+\.(css|js|html)})
+#  watch(%r{(app/assets/.+\.css)\.s[ac]ss}) { |m| m[1] }
+#  watch(%r{(app/assets/.+\.js)\.coffee}) { |m| m[1] }
+#  watch(%r{config/locales/.+\.yml})
+#end
 
 guard 'rspec', :version => 2 do
   watch(%r{^spec/.+_spec\.rb$})

@@ -6,6 +6,13 @@ CodeName::Application.routes.draw do
   devise_for :users
   resources :users, :only => :show
 
+  # barcode routes
+  resources :barcode, :only => [:index, :show, :destroy, :create, :update]
+
+  # for security tokens
+  resource :token_authentications, :only => [:create, :destroy]
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
