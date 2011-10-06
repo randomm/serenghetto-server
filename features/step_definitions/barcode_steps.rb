@@ -7,11 +7,6 @@ Then /^I debug$/ do
   0
 end
 
-Given /^I accept JSON$/ do
-  header 'Accept', 'application/json'
-#  header 'Content-Type', 'application/json'
-end
-
 #Then /^HTTP response code should be (\d+)$/ do |code|
 #  page.driver.status_code.should == code.to_i
 #end
@@ -19,20 +14,6 @@ end
 Then /^I should see all the barcodes$/ do
   pending # express the regexp above with the code you wish you had
 end
-
-Given /^I send and accept XML$/ do
-  header 'Accept', 'text/xml'
-  header 'Content-Type', 'text/xml'
-end
-
-Then /^the response should be a success$/ do
-  assert_equal 201, last_response.status
-end
-
-#Given /^I send and accept JSON$/ do
-#  header 'Accept', 'application/json'
-#  header 'Content-Type', 'application/json'
-#end
 
 When /^I send a GET request for "([^\"]*)"$/ do |path|
   get path
@@ -48,15 +29,6 @@ end
 
 When /^I send a DELETE request to "([^\"]*)"$/ do |path|
   delete path
-end
-
-Then /^the response should be "([^\"]*)"$/ do |status|
-  last_response.status.should == status.to_i
-end
-
-Then /^the XML response should be a "([^\"]*)" array with (\d+) "([^\"]*)" elements$/ do |tag, number_of_children, child_tag|
-  page = Nokogiri::XML(last_response.body)
-  page.xpath("//#{tag}/#{child_tag}").length.should == number_of_children.to_i
 end
 
 Then /^the JSON response should be an array with (\d+) "([^\"]*)" elements$/ do |number_of_children, name|

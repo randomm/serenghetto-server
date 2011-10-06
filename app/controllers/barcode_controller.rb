@@ -1,7 +1,7 @@
 class BarcodeController < ApplicationController
 
   respond_to :html, :only => :index
-  respond_to :xml, :json, :except => :index  
+  respond_to :json, :except => :index  
 
   def index
     respond_with(@barcodes = Barcode.all, :status => :ok)

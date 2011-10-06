@@ -53,5 +53,5 @@ gem "mysql", ">= 2.8.1"
 gem "cancan", ">=1.6.6"
 
 # add cucumber-api-steps and jsonpath for API acceptance testing
-gem 'cucumber-api-steps', :group => :test, :require => false
+#gem 'cucumber-api-steps', :group => :test, :require => false # does not seem to work; page not available in tests
 gem 'jsonpath', :group => :test

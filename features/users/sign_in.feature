@@ -33,6 +33,6 @@ Feature: Sign in
 
     Scenario: User signs in through a mobile device (Accept: text/json)
       Given I am not logged in
-      And I send and accept JSON
+      And I accept JSON
       And I am a user named "foo" with an email "user@test.com" and password "please"
       When I post my email "user@test.com" and password "please" to the sign in page

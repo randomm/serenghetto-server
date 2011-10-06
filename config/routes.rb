@@ -18,7 +18,15 @@ CodeName::Application.routes.draw do
   # for security tokens
   resource :token_authentications, :only => [:create, :destroy]
 
-
+  # API routing
+  namespace :api do
+    resources :barcode, :only => [:show, :destroy, :create, :update]
+  end
+  devise_scope :user do 
+    namespace :api do
+      resources :session, :only => [:create, :destroy]
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

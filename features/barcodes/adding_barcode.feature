@@ -8,7 +8,7 @@ Feature: Add new barcode
     And I accept JSON
     When I post my email "user@test.com" and password "please" to the sign in page
 #    Then I debug
-    Then the response should be a success
+    Then the response status should be "201"
 
     @wip
     Scenario: User posts new barcode via HTTP API
@@ -16,7 +16,7 @@ Feature: Add new barcode
       When I send a new barcode via HTTP API with the following:
         |name|barcode|description|
         |test name|0123456789|test description|
-      Then the response should be a success
+      Then the response status should be "201"
 
 
 
