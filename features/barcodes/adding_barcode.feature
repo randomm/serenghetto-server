@@ -4,19 +4,19 @@ Feature: Add new barcode
   Should be able to add new barcodes into the system
 
   Background:
-    Given I accept JSON
-    And I am a user named "foo" with an email "user@test.com" and password "please"
-    When I sign in as "user@test.com/please"
-    Then I should be signed in
-
+    Given I am a user named "foo" with an email "user@test.com" and password "please"
+    And I accept JSON
+    When I post my email "user@test.com" and password "please" to the sign in page
+#    Then I debug
+    Then the response should be a success
 
     @wip
     Scenario: User posts new barcode via HTTP API
+      Given I accept JSON
       When I send a new barcode via HTTP API with the following:
         |name|barcode|description|
         |test name|0123456789|test description|
-      Then HTTP response code should be 200
-      Then show me the response
+      Then the response should be a success
 
 
 

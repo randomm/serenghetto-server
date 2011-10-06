@@ -2,9 +2,19 @@ Given /^I send a new barcode via HTTP API with the following:$/ do |body|
   post '/barcode', body.hashes.first
 end
 
-Then /^HTTP response code should be (\d+)$/ do |code|
-  page.driver.status_code.should == code.to_i
+Then /^I debug$/ do
+  breakpoint
+  0
 end
+
+Given /^I accept JSON$/ do
+  header 'Accept', 'application/json'
+#  header 'Content-Type', 'application/json'
+end
+
+#Then /^HTTP response code should be (\d+)$/ do |code|
+#  page.driver.status_code.should == code.to_i
+#end
 
 Then /^I should see all the barcodes$/ do
   pending # express the regexp above with the code you wish you had
@@ -15,10 +25,14 @@ Given /^I send and accept XML$/ do
   header 'Content-Type', 'text/xml'
 end
 
-Given /^I send and accept JSON$/ do
-  header 'Accept', 'application/json'
-  header 'Content-Type', 'application/json'
+Then /^the response should be a success$/ do
+  assert_equal 201, last_response.status
 end
+
+#Given /^I send and accept JSON$/ do
+#  header 'Accept', 'application/json'
+#  header 'Content-Type', 'application/json'
+#end
 
 When /^I send a GET request for "([^\"]*)"$/ do |path|
   get path

@@ -86,3 +86,7 @@ Then /^new password should be "([^"]*)"$/ do |new_password|
   And %{I follow "Edit account"}
   Then %{the "Name" field should equal "baz"}
 end
+
+When /^I post my email "([^"]*)" and password "([^"]*)" to the sign in page$/ do |email, password|
+  post '/users/sign_in', :user => { :email => email, :password => password }
+end

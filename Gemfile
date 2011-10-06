@@ -21,6 +21,7 @@ gem "capybara", ">= 1.1.1", :group => :test
 gem "database_cleaner", ">= 0.6.7", :group => :test
 gem "launchy", ">= 2.0.5", :group => :test
 gem "guard", ">= 0.6.2", :group => :development
+gem "ruby-debug19", :group => [:development, :test], :require => "ruby-debug"
 case HOST_OS
   when /darwin/i
     gem 'rb-fsevent', :group => :development

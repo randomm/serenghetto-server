@@ -1,0 +1,5 @@
+%h3 We currently have #{@barcodes.count} barcodes in the system:
+
+%p
+  - @barcodes.each do |barcode|
+    %li #{link_to barcode.barcode, barcode}

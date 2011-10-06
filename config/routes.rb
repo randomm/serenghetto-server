@@ -4,6 +4,12 @@ CodeName::Application.routes.draw do
   root :to => "home#index"
 
   devise_for :users
+#  devise_for :users, :controllers => { :sessions => "api/sessions" }
+#  devise_scope :user do
+#    namespace :api do
+#      resources :sessions, :only => [:create, :destroy]
+#    end
+#  end
   resources :users, :only => :show
 
   # barcode routes
