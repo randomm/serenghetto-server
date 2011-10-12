@@ -22,13 +22,4 @@ class SessionsController < Devise::SessionsController
     return render :status => 403, :json => {:success => false, :errors => ["Login failed."]}
   end
 
-#  def create  
-#    warden.authenticate!(:scope => resource_name)
-#    render :status => 200, :json => { :error => "Success" }  
-#  end 
-  
-#  def failure
-#    render :status => 401, :json => { :error => "Ggrrhh something went wrong!" }  
-#  end
-
 end
