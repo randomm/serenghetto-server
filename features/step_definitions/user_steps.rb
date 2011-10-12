@@ -87,6 +87,14 @@ Then /^new password should be "([^"]*)"$/ do |new_password|
   Then %{the "Name" field should equal "baz"}
 end
 
-When /^I post my email "([^"]*)" and password "([^"]*)" to the sign in page$/ do |email, password|
-  post '/users/sign_in', :user => { :email => email, :password => password }
+When /^I post my email "([^"]*)" and password "([^"]*)" to "([^"]*)"$/ do |arg1, arg2, arg3|
+  post arg3, :user => { :email => arg1, :password => arg2 }
+end
+
+Then /^I should be signed in and get an authentication token back$/ do
+  p JSON.parse(last_response.body)
+end
+
+Then /^I should not be signed in$/ do
+  pending # express the regexp above with the code you wish you had
 end

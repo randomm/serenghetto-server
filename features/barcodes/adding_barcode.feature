@@ -6,7 +6,7 @@ Feature: Add new barcode
   Background:
     Given I am a user named "foo" with an email "user@test.com" and password "please"
     And I accept JSON
-    When I post my email "user@test.com" and password "please" to the sign in page
+    When I post my email "user@test.com" and password "please" to "/api/session"
 #    Then I debug
     Then the response status should be "201"
 
@@ -17,6 +17,10 @@ Feature: Add new barcode
         |name|barcode|description|
         |test name|0123456789|test description|
       Then the response status should be "201"
+      
+#    @wip
+#    Scenario: User deletes an existing barcode via HTTP API
+      
 
 
 

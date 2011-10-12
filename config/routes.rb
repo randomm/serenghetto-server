@@ -3,30 +3,28 @@ CodeName::Application.routes.draw do
 
   root :to => "home#index"
 
-  devise_for :users
-#  devise_for :users, :controllers => { :sessions => "api/sessions" }
-#  devise_scope :user do
-#    namespace :api do
-#      resources :sessions, :only => [:create, :destroy]
-#    end
-#  end
+  # devise routes
+  devise_for :users, :controllers => { :sessions => "sessions" }
   resources :users, :only => :show
 
   # barcode routes
-  resources :barcode, :only => [:index, :show, :destroy, :create, :update]
+  resources :barcode, :only => [:index, :show, :destroy]
 
   # for security tokens
   resource :token_authentications, :only => [:create, :destroy]
 
-  # API routing
-  namespace :api do
-    resources :barcode, :only => [:show, :destroy, :create, :update]
+  # API routing for POST barcode
+  scope "/api" do
+    resources :barcode, :only => [:create]
   end
-  devise_scope :user do 
-    namespace :api do
-      resources :session, :only => [:create, :destroy]
-    end
-  end
+  
+  # API routing for devise
+#  devise_scope :user do
+#    post "/api/session", :to => "sessions#create"
+#    post "/api/user", :to => "devise/users#create"
+#  end
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

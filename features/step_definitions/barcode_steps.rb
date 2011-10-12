@@ -1,5 +1,5 @@
 Given /^I send a new barcode via HTTP API with the following:$/ do |body|
-  post '/barcode', body.hashes.first
+  post '/api/barcode', body.hashes.first
 end
 
 Then /^I debug$/ do

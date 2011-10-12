@@ -39,7 +39,7 @@
     %p 
       You can use this url to login
       %br/
-      = link_to "http://localhost:3000#{root_path(:auth_token => resource.authentication_token)}", root_path(:auth_token => resource.authentication_token)
+      = link_to "http://localhost:3000#{root_path(:token => resource.authentication_token)}", root_path(:token => resource.authentication_token)
 
   %h3 Cancel my account
   %p
