@@ -4,7 +4,9 @@ CodeName::Application.routes.draw do
   root :to => "home#index"
 
   # devise routes
-  devise_for :users, :controllers => { :sessions => "sessions" }
+  devise_for :users, :controllers => { :sessions => "sessions" } do
+    post '/api/session', :to => "sessions#create"
+  end
   resources :users, :only => :show
 
   # barcode routes

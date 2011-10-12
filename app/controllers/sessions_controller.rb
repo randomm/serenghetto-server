@@ -2,8 +2,13 @@ class SessionsController < Devise::SessionsController
   protect_from_forgery :except => :create
 
   def create
-    resource = warden.authenticate!(:scope => resource_name, :recall => "sessions#failure")
-    return sign_in_and_redirect(resource_name, resource)
+    respond_to do |format|  
+      format.html { super }  
+      format.json { 
+        resource = warden.authenticate!(:scope => resource_name, :recall => "sessions#failure")
+        return sign_in_and_redirect(resource_name, resource)
+      }
+    end
   end
 
   def sign_in_and_redirect(resource_or_scope, resource=nil)
