@@ -5,7 +5,7 @@ gem 'rails', '3.1.0'
 gem 'sqlite3'
 group :assets do
   gem 'sass-rails', "  ~> 3.1.0"
-  gem 'coffee-rails', "~> 3.1.0"
+#  gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
 end
 gem 'jquery-rails'
@@ -22,18 +22,8 @@ gem "database_cleaner", ">= 0.6.7", :group => :test
 gem "launchy", ">= 2.0.5", :group => :test
 gem "guard", ">= 0.6.2", :group => :development
 gem "ruby-debug19", :group => [:development, :test], :require => "ruby-debug"
-case HOST_OS
-  when /darwin/i
-    gem 'rb-fsevent', :group => :development
-    gem 'growl', :group => :development
-#  when /linux/i
-#    gem 'libnotify', :group => :development
-#    gem 'rb-inotify', :group => :development
-#  when /mswin|windows/i
-#    gem 'rb-fchange', :group => :development
-#    gem 'win32console', :group => :development
-#    gem 'rb-notifu', :group => :development
-end
+gem 'rb-fsevent', :group => :development
+gem 'growl', :group => :development
 gem "guard-bundler", ">= 0.1.3", :group => :development
 gem "guard-rails", ">= 0.0.3", :group => :development
 gem "guard-livereload", ">= 0.3.0", :group => :development
