@@ -14,22 +14,28 @@
 ActiveRecord::Schema.define(:version => 20111004122415) do
 
   create_table "barcode_locations", :force => true do |t|
+    t.integer  "barcode_id"
+    t.integer  "user_id"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.point    "geom",       :limit => nil, :null => false, :srid => 4326, :with_z => true
   end
+
+  add_index "barcode_locations", ["geom"], :name => "index_barcode_locations_on_geom", :spatial => true
 
   create_table "barcodes", :force => true do |t|
-    t.string   "barcode",     :default => "", :null => false
+    t.string   "barcode",    :null => false
     t.text     "name"
-    t.text     "description"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "user_locations", :options=>'ENGINE=MyISAM', :force => true do |t|
-    t.point    "geom",        :limit => nil, :null => false
+  create_table "user_locations", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.point    "geom",        :limit => nil, :null => false, :srid => 4326, :with_z => true
     t.integer  "user_id"
     t.text     "description"
   end

@@ -3,7 +3,7 @@ class CreateBarcodes < ActiveRecord::Migration
     create_table :barcodes do |t|
       t.text :barcode, :null => false
       t.text :name
-      t.text :description
+      t.integer :user_id
       t.timestamps
     end
   end

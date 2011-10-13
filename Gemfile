@@ -5,7 +5,7 @@ gem 'rails', '3.1.0'
 gem 'sqlite3'
 group :assets do
   gem 'sass-rails', "  ~> 3.1.0"
-#  gem 'coffee-rails', "~> 3.1.0"
+  gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
 end
 gem 'jquery-rails'
@@ -33,11 +33,15 @@ gem "devise", ">= 1.4.5"
 gem "frontend-helpers"
 gem "rails-footnotes", ">= 3.7", :group => :development
 
+# add mysql
+#gem "mysql", ">= 2.8.1"
+
+# add postgresql
+gem 'pg', :require => 'pg'
+
 # add spatial adapter
 gem "spatial_adapter"
-
-# add mysql
-gem "mysql", ">= 2.8.1"
+gem "georuby"
 
 # add cancan
 gem "cancan", ">=1.6.6"
