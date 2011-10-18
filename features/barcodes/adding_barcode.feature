@@ -10,7 +10,7 @@ Feature: Add new barcode
 #    Then I debug
     Then the response status should be "201"
 
-    @wip
+    @dev
     Scenario: User posts new barcode via HTTP API
       Given I accept JSON
       When I send a new barcode via HTTP API with the following:

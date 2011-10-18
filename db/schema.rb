@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111004122415) do
+ActiveRecord::Schema.define(:version => 20111018123356) do
 
   create_table "barcode_locations", :force => true do |t|
-    t.integer  "barcode_id"
-    t.integer  "user_id"
+    t.integer  "barcode_id",                :null => false
+    t.integer  "user_id",                   :null => false
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20111004122415) do
   create_table "barcodes", :force => true do |t|
     t.string   "barcode",    :null => false
     t.text     "name"
-    t.integer  "user_id"
+    t.integer  "user_id",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
