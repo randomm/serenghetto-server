@@ -45,5 +45,5 @@ Feature: Sign in
       And I accept JSON
       And I am a user named "foo" with an email "user@test.com" and password "please"
       When I post my email "user@test.com" and password "wrongpassword" to "/api/session"
-      Then I debug
+#      Then I debug
       Then I should not be signed in

@@ -1,5 +1,7 @@
 class BarcodeController < ApplicationController
 
+  before_filter :authenticate_user!, :except => :index
+
   respond_to :html, :only => :index
   respond_to :json, :except => :index  
 
@@ -9,15 +11,11 @@ class BarcodeController < ApplicationController
   
   def create
     # is this too convoluted: First setting :barcode to nil if its length is 0, and only after the DB fails let the client know? / JT
-    @barcode = Barcode.create({:name => params[:name], :description => params[:description], :barcode => params[:barcode].length > 0 ? params[:barcode] : nil})
+    @barcode = Barcode.create({:name => params[:name], :barcode => params[:barcode].length > 0 ? params[:barcode] : nil })
     if @barcode.save
-      respond_to do |format|
-        format.json { render :json => @barcode, :status => :created }
-      end
+      return render :status => 201, :json => {:success => true, :barcode => { :name => @barcode.name, :barcode => @barcode.barcode } }
     else
-      respond_to do |format|
-        format.json { render :json => @barcode.errors, :status => :unprocessable_entity }
-      end
+      return render :status => 403, :json => {:success => false }
     end
   end      
 end
