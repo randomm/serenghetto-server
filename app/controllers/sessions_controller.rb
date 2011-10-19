@@ -23,12 +23,12 @@ class SessionsController < Devise::SessionsController
     if !current_user.authentication_token
       current_user.reset_authentication_token!
     end
-    return render :status => 201, :json => {:msg => "Logged in successfully!", :body => { :user => { :email => current_user.email, :id => current_user.id, :token => current_user.authentication_token }}}
+    return render :status => 201, :json => {:message => "Logged in successfully!", :body => { :user => { :email => current_user.email, :id => current_user.id, :token => current_user.authentication_token }}}
 #    return render :status => 200, :json => {:success => true, :redirect => stored_location_for(scope) || after_sign_in_path_for(resource)}
   end
 
   def failure
-    return render :status => 403, :json => {:msg => "Log in failed! Wrong email address or password, perhaps?" }
+    return render :status => 403, :json => {:message => "Log in failed! Wrong email address or password, perhaps?" }
   end
 
 end
