@@ -28,7 +28,7 @@ class SessionsController < Devise::SessionsController
   end
 
   def failure
-    return render :status => 403, :json => {:success => false, :errors => ["Login failed."]}
+    return render :status => 403, :json => {:msg => "Log in failed! Wrong email address or password, perhaps?" }
   end
 
 end
