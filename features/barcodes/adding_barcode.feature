@@ -23,8 +23,8 @@ Feature: Add new barcode
     Scenario: User posts new barcode via HTTP API with name but no code
       Given I accept JSON
       When I send a new barcode via HTTP API with the following:
-        |barcode[name]|barcode[code]|
-        |test name|0123456789|
+        |barcode[name]|barcode[foo]|
+        |test name|bar|
       Then the response status should be "403"
       And response JSON has keys body and message
       
