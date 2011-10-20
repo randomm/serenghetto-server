@@ -1,4 +1,4 @@
-Then /^response JSON has keys body and message$/ do
+Then /^response JSON has valid schema$/ do
   body = JSON.parse(last_response.body)
   assert body.has_key? 'body'
   assert body.has_key? 'message'

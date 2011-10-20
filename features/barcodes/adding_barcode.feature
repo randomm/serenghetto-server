@@ -17,7 +17,7 @@ Feature: Add new barcode
         |barcode[name]|barcode[code]|
         |test name|0123456789|
       Then the response status should be "201"
-      And response JSON has keys body and message
+      And response JSON has valid schema
       
     @dev
     Scenario: User posts new barcode via HTTP API with name but no code
@@ -26,5 +26,5 @@ Feature: Add new barcode
         |barcode[name]|barcode[foo]|
         |test name|bar|
       Then the response status should be "403"
-      And response JSON has keys body and message
+      And response JSON has valid schema
       
