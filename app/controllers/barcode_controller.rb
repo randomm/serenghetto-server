@@ -13,9 +13,9 @@ class BarcodeController < ApplicationController
     # is this too convoluted: First setting :barcode to nil if its length is 0, and only after the DB fails let the client know? / JT
     @barcode = Barcode.create({:name => params[:name], :user_id => current_user.id, :barcode => params[:barcode].length > 0 ? params[:barcode] : nil })
     if @barcode.save
-      return render :status => 201, :json => {:success => true, :barcode => { :name => @barcode.name, :barcode => @barcode.barcode } }
+      return render :status => 201, :json => {:message => "OK", :body => { :barcode => { :name => @barcode.name, :barcode => @barcode.barcode }}}
     else
-      return render :status => 403, :json => {:success => false }
+      return render :status => 403, :json => {:message => "Error, barcode not added!" }
     end
   end      
 end
