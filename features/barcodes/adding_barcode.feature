@@ -14,8 +14,8 @@ Feature: Add new barcode
     Scenario: User posts new barcode via HTTP API
       Given I accept JSON
       When I send a new barcode via HTTP API with the following:
-        |name|barcode|description|
-        |test name|0123456789|test description|
+        |barcode[name]|barcode[code]|
+        |test name|0123456789|
       Then the response status should be "201"
       
 #    @wip

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111018123356) do
+ActiveRecord::Schema.define(:version => 20111020104902) do
 
   create_table "barcode_locations", :force => true do |t|
     t.integer  "barcode_id",                :null => false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20111018123356) do
   add_index "barcode_locations", ["geom"], :name => "index_barcode_locations_on_geom", :spatial => true
 
   create_table "barcodes", :force => true do |t|
-    t.string   "barcode",    :null => false
+    t.string   "code",       :null => false
     t.text     "name"
     t.integer  "user_id",    :null => false
     t.datetime "created_at"
