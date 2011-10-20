@@ -1,3 +1,9 @@
+Then /^response JSON has keys body and message$/ do
+  body = JSON.parse(last_response.body)
+  assert body.has_key? 'body'
+  assert body.has_key? 'message'
+end
+
 Given /^I send a new barcode via HTTP API with the following:$/ do |body|
   post '/api/barcode', body.hashes.first
 end

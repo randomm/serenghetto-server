@@ -11,20 +11,20 @@ Feature: Add new barcode
     Then the response status should be "201"
 
     @dev
-    Scenario: User posts new barcode via HTTP API
+    Scenario: User posts new barcode via HTTP API with name and code but no location
       Given I accept JSON
       When I send a new barcode via HTTP API with the following:
         |barcode[name]|barcode[code]|
         |test name|0123456789|
       Then the response status should be "201"
+      And response JSON has keys body and message
       
-#    @wip
-#    Scenario: User deletes an existing barcode via HTTP API
-      
-
-
-
-
-
-
+    @dev
+    Scenario: User posts new barcode via HTTP API with name but no code
+      Given I accept JSON
+      When I send a new barcode via HTTP API with the following:
+        |barcode[name]|barcode[code]|
+        |test name|0123456789|
+      Then the response status should be "403"
+      And response JSON has keys body and message
       

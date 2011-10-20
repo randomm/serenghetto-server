@@ -21,6 +21,7 @@ class BarcodeController < ApplicationController
         :message => "OK", 
         :body => { 
           :barcode => { 
+            :id => @barcode.id,
             :name => @barcode.name, 
             :code => @barcode.code 
           }
@@ -28,7 +29,8 @@ class BarcodeController < ApplicationController
       }
     else
       return render :status => 403, :json => {
-        :message => "Error, barcode not added!" 
+        :message => "Error, barcode not added!"
+        :body => {}
       }
     end
   end      
