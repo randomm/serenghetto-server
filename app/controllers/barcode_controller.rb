@@ -20,8 +20,23 @@ class BarcodeController < ApplicationController
       :code => params[:barcode][:code].length > 0 ? params[:barcode][:code] : nil 
     })
     if @barcode.save
+      message = "Barcode saved. "
+      
+      # check if we got location data and save that as well
+      if params[:location] && params[:location].has_key?(:latitude) && params[:location].has_key?(:longitude) && params[:location].has_key?(:timestamp) && params[:location].has_key?(:accuracy)
+        @barcode_location = BarcodeLocation.create({
+          :barcode_id => @barcode.id,
+          :user_id => current_user.id,
+          :geom => Point.from_x_y(params[:location][:longitude], params[:location][:latitude]),
+          :device_timestamp => Time.at(params[:location][:timestamp].to_i),
+          :accuracy => params[:location][:accuracy]
+        })
+        message += "Location information saved."
+      end
+
+      # return to client
       return render :status => 201, :json => {
-        :message => "OK", 
+        :message => message, 
         :body => { 
           :barcode => { 
             :id => @barcode.id,

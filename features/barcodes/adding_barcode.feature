@@ -20,11 +20,20 @@ Feature: Add new barcode
       And response JSON has valid schema
       
     @dev
-    Scenario: User posts new barcode via HTTP API with name but no code
+    Scenario: User posts new barcode via HTTP API with name and location but no code
       Given I accept JSON
       When I send a new barcode via HTTP API with the following:
         |barcode[name]|barcode[foo]|
         |test name|bar|
       Then the response status should be "403"
+      And response JSON has valid schema
+      
+    @dev
+    Scenario: User posts new barcode via HTTP API with name, code and full location
+      Given I accept JSON
+      When I send a new barcode via HTTP API with the following:
+        |barcode[name]|barcode[code]|location[accuracy]|location[longitude]|location[latitude]|location[timestamp]|
+        |test name|0123456789|1.0|61.12345|24.12345|1319193664|
+      Then the response status should be "201"
       And response JSON has valid schema
       

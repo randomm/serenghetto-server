@@ -1,7 +1,7 @@
 require 'rbconfig'
 #HOST_OS = Config::CONFIG['host_os']
 source 'http://rubygems.org'
-gem 'rails', '3.1.0'
+gem 'rails', '3.1.1'
 #gem 'sqlite3'
 group :assets do
   gem 'sass-rails', "  ~> 3.1.0"
@@ -40,8 +40,9 @@ gem "rails-footnotes", ">= 3.7", :group => :development
 gem 'pg', :require => 'pg'
 
 # add spatial adapter
-gem "spatial_adapter"
-gem "georuby"
+gem 'spatial_adapter', :git => 'git://github.com/Empact/spatial_adapter.git'
+#gem "spatial_adapter", ">=1.3.1"
+# gem "georuby"
 
 # add cancan
 gem "cancan", ">=1.6.6"

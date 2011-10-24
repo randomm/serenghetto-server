@@ -11,15 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111020104902) do
+ActiveRecord::Schema.define(:version => 20111024093707) do
 
   create_table "barcode_locations", :force => true do |t|
-    t.integer  "barcode_id",                :null => false
-    t.integer  "user_id",                   :null => false
+    t.integer  "barcode_id",                      :null => false
+    t.integer  "user_id",                         :null => false
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.point    "geom",       :limit => nil, :null => false, :srid => 4326, :with_z => true
+    t.point    "geom",             :limit => nil,                 :srid => 4326, :with_z => true
+    t.float    "accuracy"
+    t.datetime "device_timestamp"
   end
 
   add_index "barcode_locations", ["geom"], :name => "index_barcode_locations_on_geom", :spatial => true
