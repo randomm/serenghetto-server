@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111024093707) do
+ActiveRecord::Schema.define(:version => 20111024103105) do
 
   create_table "barcode_locations", :force => true do |t|
     t.integer  "barcode_id",                      :null => false
