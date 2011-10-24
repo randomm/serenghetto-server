@@ -40,7 +40,7 @@ gem "rails-footnotes", ">= 3.7", :group => :development
 gem 'pg', :require => 'pg'
 
 # add spatial adapter
-gem 'spatial_adapter', :git => 'git://github.com/Empact/spatial_adapter.git'
+gem 'spatial_adapter', :git => 'git://github.com/randomm/spatial_adapter.git'
 #gem "spatial_adapter", ">=1.3.1"
 # gem "georuby"
 

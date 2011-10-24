@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/Empact/spatial_adapter.git
+  remote: git://github.com/randomm/spatial_adapter.git
   revision: d64ac1c03c837d6fffddfac1a0dc0818bf10bce6
   specs:
     spatial_adapter (1.2.0)
