@@ -91,10 +91,28 @@ When /^I post my email "([^"]*)" and password "([^"]*)" to "([^"]*)"$/ do |arg1,
   post arg3, :user => { :email => arg1, :password => arg2 }
 end
 
-Then /^I should be signed in and get an authentication token back$/ do
-  p JSON.parse(last_response.body)
+Given /^I log in$/ do
+  And %{I post my email "#{@user.email}" and password "#{@user.password}" to "/api/session"}
+  Then %{I should be logged in}
+end
+
+Given /^I am a registered user$/ do
+  @user = FactoryGirl.create(:user)
+end
+
+Then /^I should be logged in$/ do
+  body = JSON.parse(last_response.body)["body"]
+  body.has_key?("user").should be_true
+  body["user"].has_key?("token").should be_true
+  @user_id = body['user']['id']
+end
+
+Then /^get an authentication token back$/ do
+  body = JSON.parse(last_response.body)["body"]
+  body["user"].has_key?("token").should be_true
 end
 
 Then /^I should not be signed in$/ do
-  pending # express the regexp above with the code you wish you had
+  body = JSON.parse(last_response.body)["body"]
+  body["user"].has_key?("token").should be_false
 end

@@ -41,3 +41,9 @@ Then /^the JSON response should be an array with (\d+) "([^\"]*)" elements$/ do 
   page = JSON.parse(last_response.body)
   page.map { |d| d[name] }.length.should == number_of_children.to_i
 end
+
+When /^I request a list of barcodes I have submitted to the system$/ do
+#  user_id = JSON.parse(last_response.body)['body']['user']['id']
+#  get '/api/'+user_id+'/barcodes'
+#  debugger
+end

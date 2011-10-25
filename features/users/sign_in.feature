@@ -31,19 +31,21 @@ Feature: Sign in
       When I return next time
       Then I should be already signed in
 
-    @wip
+    @dev
     Scenario: User signs in through a mobile device (Accept: text/json)
       Given I am not logged in
       And I accept JSON
       And I am a user named "foo" with an email "user@test.com" and password "please"
       When I post my email "user@test.com" and password "please" to "/api/session"
-      Then I should be signed in and get an authentication token back
+      Then the response status should be "201"
+      And I should be logged in 
+      And get an authentication token back
 
-    @wip
+    @dev
     Scenario: User enters wrong password through a mobile device (Accept: text/json)
       Given I am not logged in
       And I accept JSON
       And I am a user named "foo" with an email "user@test.com" and password "please"
       When I post my email "user@test.com" and password "wrongpassword" to "/api/session"
-#      Then I debug
-      Then I should not be signed in
+      Then the response status should be "403"
+      And I should not be signed in

@@ -10,7 +10,6 @@ Feature: Add new barcode
 #    Then I debug
     Then the response status should be "201"
 
-    @dev
     Scenario: User posts new barcode via HTTP API with name and code but no location
       Given I accept JSON
       When I send a new barcode via HTTP API with the following:
@@ -19,7 +18,6 @@ Feature: Add new barcode
       Then the response status should be "201"
       And response JSON has valid schema
       
-    @dev
     Scenario: User posts new barcode via HTTP API with name and location but no code
       Given I accept JSON
       When I send a new barcode via HTTP API with the following:
@@ -28,7 +26,6 @@ Feature: Add new barcode
       Then the response status should be "403"
       And response JSON has valid schema
       
-    @dev
     Scenario: User posts new barcode via HTTP API with name, code and full location
       Given I accept JSON
       When I send a new barcode via HTTP API with the following:
