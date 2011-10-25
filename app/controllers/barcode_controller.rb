@@ -22,10 +22,6 @@ class BarcodeController < ApplicationController
     if @barcode.save
       message = "Barcode saved. "
       
-      # check if we got location data and save that as well
-      breakpoint
-      0
-
       if params[:location] && params[:location].has_key?(:latitude) && params[:location].has_key?(:longitude) && params[:location].has_key?(:timestamp) && params[:location].has_key?(:accuracy)
         @barcode_location = BarcodeLocation.create({
           :barcode_id => @barcode.id,
