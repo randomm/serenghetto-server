@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   # set up relationships to other models
   has_many :user_locations
   has_many :barcodes
-  has_many :barcode_locations, :through => :barcode
+  has_many :barcode_locations, :through => :barcodes
 
 #  def ensure_authentication_token!   
 #    reset_authentication_token! if authentication_token.blank?   
