@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   # set up relationships to other models
   has_many :user_locations
+  has_many :barcodes
   has_many :barcode_locations, :through => :barcode
 
 #  def ensure_authentication_token!   
