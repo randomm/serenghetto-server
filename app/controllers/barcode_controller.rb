@@ -50,7 +50,7 @@ class BarcodeController < ApplicationController
   end
   
   def list
-    @barcodes = Barcode.all
+    @barcodes = Barcode.where(:user_id => current_user.id)
 
     # return to client
     return render :status => 200, :json => {
