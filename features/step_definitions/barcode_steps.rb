@@ -49,7 +49,7 @@ end
 
 When /^I have (\d+) barcodes in the system$/ do |n|
   n.to_i.times do 
-    Factory.create(:barcode, :user_id => @user_id )
+    Factory.create(:barcode, :user => User.find(@user_id) )
   end
 end
 
