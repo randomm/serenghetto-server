@@ -43,7 +43,12 @@ Then /^the JSON response should be an array with (\d+) "([^\"]*)" elements$/ do 
 end
 
 When /^I request a list of barcodes I have submitted to the system$/ do
-#  user_id = JSON.parse(last_response.body)['body']['user']['id']
-#  get '/api/'+user_id+'/barcodes'
-#  debugger
+  user_id = JSON.parse(last_response.body)['body']['user']['id']
+  get '/api/'+user_id.to_s+'/barcodes'
+end
+
+When /^I have (\d+) barcodes in the system$/ do |n|
+  n.to_i.times do 
+    Factory.create(:barcode, :user_id => @user_id )
+  end
 end

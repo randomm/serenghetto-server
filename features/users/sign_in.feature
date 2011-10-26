@@ -31,7 +31,6 @@ Feature: Sign in
       When I return next time
       Then I should be already signed in
 
-    @dev
     Scenario: User signs in through a mobile device (Accept: text/json)
       Given I am not logged in
       And I accept JSON
@@ -41,7 +40,6 @@ Feature: Sign in
       And I should be logged in 
       And get an authentication token back
 
-    @dev
     Scenario: User enters wrong password through a mobile device (Accept: text/json)
       Given I am not logged in
       And I accept JSON

@@ -1,13 +1,17 @@
 require 'factory_girl'
 
-Factory.define :user do |u|
-  u.name 'Test User'
-  u.email 'user@test.com'
-  u.password 'please'
-end
+FactoryGirl.define do
+  factory :user do |u|
+    u.name 'Test User'
+    u.email 'user@test.com'
+    u.password 'please'
+  end
 
-Factory.define :barcode do |b|
-  b.name 'Test Name'
-  b.description 'Test Description Lorem Ipsum Doret Laalaa'
-  b.barcode '012345678901234567890'
+  factory :barcode do |b|
+    r = Random.new
+    b.name 'Test Name'
+    b.code r.rand(10000000000...99999999999).to_s
+    b.user_id 1
+  end
+
 end

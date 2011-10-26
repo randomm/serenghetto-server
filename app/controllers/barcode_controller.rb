@@ -47,7 +47,19 @@ class BarcodeController < ApplicationController
     else
       return notcreated
     end
-  end   
+  end
+  
+  def list
+    @barcodes = Barcode.all
+
+    # return to client
+    return render :status => 200, :json => {
+      :message => "Complete list of barcodes for current user.", 
+      :body => { 
+        :entries => @barcodes
+      }
+    }
+  end
   
   private
   def notcreated

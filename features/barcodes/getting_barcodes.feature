@@ -3,18 +3,13 @@ Feature: Add new barcode
   A user
   Should be able to view their own and other players' barcode scans
 
-#  Background:
-#    Given I am a user named "foo" with an email "user@test.com" and password "please"
-#    And I accept JSON
-#    When I post my email "user@test.com" and password "please" to "/api/session"
-#    Then I debug
-#    Then the response status should be "201"
-
-    @dev
-    Scenario: Logged in user lists their barcodes
-      Given I am a registered user
-      And I accept JSON
-      And I log in
-      When I request a list of barcodes I have submitted to the system
-      Then the response status should be "201"
-      And response JSON has valid schema
+  @dev
+  Scenario: Logged in user lists their barcodes
+    Given I am a registered user
+    And I accept JSON
+    And I log in
+    When I have 37 barcodes in the system
+    And I request a list of barcodes I have submitted to the system
+    Then the response status should be "200"
+    And response JSON has valid schema
+    And I debug
