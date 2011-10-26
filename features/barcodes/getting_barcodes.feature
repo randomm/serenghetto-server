@@ -12,4 +12,4 @@ Feature: Add new barcode
     And I request a list of barcodes I have submitted to the system
     Then the response status should be "200"
     And response JSON has valid schema
-    And I debug
+    And response has 37 barcodes

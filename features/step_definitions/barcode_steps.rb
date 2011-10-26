@@ -52,3 +52,8 @@ When /^I have (\d+) barcodes in the system$/ do |n|
     Factory.create(:barcode, :user_id => @user_id )
   end
 end
+
+Then /^response has (\d+) barcodes$/ do |arg1|
+  body = JSON.parse(last_response.body)['body']
+  assert body['entries'].length.should == arg1.to_i
+end
