@@ -18,7 +18,7 @@ CodeName::Application.routes.draw do
   # API routing for POST barcode
   scope "/api" do
     resources :barcode, :only => [:create]
-    match ':user_id/barcodes' => 'barcode#list', :only => :get
+    match ':user_id/barcodes' => 'barcode#user_list', :only => :get
   end
   
   # API routing for devise

@@ -49,7 +49,7 @@ class BarcodeController < ApplicationController
     end
   end
   
-  def list
+  def user_list
     @barcodes = Barcode.where(:user_id => current_user.id)
 
     # return to client
