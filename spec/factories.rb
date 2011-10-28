@@ -2,6 +2,9 @@ require 'factory_girl'
 
 FactoryGirl.define do
   factory :user do |u|
+    u.sequence :email do |n| 
+      "user#{n}@test.com"
+    end
     u.name 'Test User'
     u.email 'user@test.com'
     u.password 'please'

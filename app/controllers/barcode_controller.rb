@@ -1,14 +1,10 @@
 class BarcodeController < ApplicationController
 
-  before_filter :authenticate_user!, :except => :index
+  before_filter :authenticate_user!, :all_barcodes
 
   respond_to :html, :only => :index
   respond_to :json, :except => :index  
 
-  def index
-    respond_with(@barcodes = Barcode.all, :status => :ok)
-  end
-  
   def create
     # is this too convoluted: First setting :barcode to nil if its length is 0, and only after the DB fails let the client know? / JT
     unless params[:barcode].has_key?(:code)
@@ -49,12 +45,26 @@ class BarcodeController < ApplicationController
     end
   end
   
-  def user_list
+  def user_barcodes
     @barcodes = Barcode.where(:user_id => current_user.id)
+#    authorize! :user_barcodes, @barcodes
 
     # return to client
     return render :status => 200, :json => {
       :message => "Complete list of barcodes for current user.", 
+      :body => { 
+        :entries => @barcodes
+      }
+    }
+  end
+  
+  def all_barcodes
+    @barcodes = Barcode.all
+#    authorize! :user_barcodes, @barcodes
+
+    # return to client
+    return render :status => 200, :json => {
+      :message => "All barcodes in the system.", 
       :body => { 
         :entries => @barcodes
       }

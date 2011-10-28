@@ -57,3 +57,13 @@ Then /^response has (\d+) barcodes$/ do |arg1|
   body = JSON.parse(last_response.body)['body']
   assert body['entries'].length.should == arg1.to_i
 end
+
+When /^there are (\d+) barcodes in the system$/ do |n|
+  n.to_i.times do 
+    Factory.create(:barcode)
+  end
+end
+
+When /^I request all barcodes in the system$/ do
+  get '/api/barcodes'
+end

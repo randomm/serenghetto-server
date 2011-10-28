@@ -1,5 +1,5 @@
 class SessionsController < Devise::SessionsController
-  protect_from_forgery :except => :create
+  protect_from_forgery
   prepend_view_path "app/views/devise"
 
   def create
