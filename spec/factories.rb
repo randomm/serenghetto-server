@@ -1,13 +1,12 @@
 require 'factory_girl'
 
 FactoryGirl.define do
-  factory :user do |u|
-    u.sequence :email do |n| 
+  factory :user do
+    sequence :email do |n| 
       "user#{n}@test.com"
     end
-    u.name 'Test User'
-    u.email 'user@test.com'
-    u.password 'please'
+    name 'Test User'
+    password 'please'
   end
 
   factory :barcode do |b|

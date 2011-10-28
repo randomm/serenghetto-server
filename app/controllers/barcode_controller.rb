@@ -1,6 +1,6 @@
 class BarcodeController < ApplicationController
 
-  before_filter :authenticate_user!, :all_barcodes
+  before_filter :authenticate_user!, :except => :all_barcodes
 
   respond_to :html, :only => :index
   respond_to :json, :except => :index  
