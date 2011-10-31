@@ -13,11 +13,13 @@ FactoryGirl.define do
     b.name 'Test Name'
     b.code '01234567890'
     b.association :user
+    b.after_create { |b| Factory(:barcode_location, :barcode => b, :user => b.user) }
+#    b.association :barcode_location, :factory => :barcode_location
   end
 
   factory :barcode_location do |b|
-    b.barcode_id 1
-    b.user_id 1
+    b.association :user
+    b.association :barcode
     b.geom Point.from_x_y(24.523424, 61.12345, 4326)
     b.device_timestamp Time.now
     b.accuracy 1.0

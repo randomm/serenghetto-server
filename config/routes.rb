@@ -20,6 +20,7 @@ CodeName::Application.routes.draw do
     resources :barcode, :only => [:create]
     match ':user_id/barcodes' => 'barcode#user_barcodes', :only => :get
     match '/barcodes' => 'barcode#all_barcodes', :only => :get
+    match '/barcodes/:id' => 'barcode#show', :only => :get
   end
   
   # API routing for devise

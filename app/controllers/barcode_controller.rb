@@ -1,9 +1,9 @@
 class BarcodeController < ApplicationController
 
-  before_filter :authenticate_user!, :except => :all_barcodes
+  before_filter :authenticate_user!, :except => [ :all_barcodes, :show ]
 
-  respond_to :html, :only => :index
-  respond_to :json, :except => :index  
+#  respond_to :html, :only => :index
+  respond_to :json #, :except => :index  
 
   def create
     # is this too convoluted: First setting :barcode to nil if its length is 0, and only after the DB fails let the client know? / JT
@@ -46,7 +46,7 @@ class BarcodeController < ApplicationController
   end
   
   def user_barcodes
-    @barcodes = Barcode.where(:user_id => current_user.id)
+    @barcodes = Barcode.get_all_for_current_user(current_user.id)
 #    authorize! :user_barcodes, @barcodes
 
     # return to client
@@ -59,17 +59,30 @@ class BarcodeController < ApplicationController
   end
   
   def all_barcodes
-    @barcodes = Barcode.all
+    barcodes = Barcode.all()
 #    authorize! :user_barcodes, @barcodes
 
     # return to client
     return render :status => 200, :json => {
       :message => "All barcodes in the system.", 
       :body => { 
-        :entries => @barcodes
+        :entries => barcodes
       }
     }
   end
+  
+  def show
+    barcode = Barcode.find(params[:id])
+
+    # return to client
+    return render :status => 200, :json => {
+      :message => "Requested barcode information attached.", 
+      :body => { 
+        :entries => [barcode]
+      }
+    }
+  end
+  
   
   private
   def notcreated

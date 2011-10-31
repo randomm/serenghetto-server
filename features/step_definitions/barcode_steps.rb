@@ -67,3 +67,18 @@ end
 When /^I request all barcodes in the system$/ do
   get '/api/barcodes'
 end
+
+Given /^there is a barcode with location data in the system$/ do
+  b = Factory.create(:barcode)
+  @barcode_id = b.id
+end
+
+When /^I request that barcode$/ do
+  get '/api/barcodes/'+@barcode_id.to_s
+end
+
+Then /^barcode has location information attached$/ do
+  body = JSON.parse(last_response.body)['body']
+  debugger
+  assert body['entries'][0].has_key?('location').should be_true
+end
