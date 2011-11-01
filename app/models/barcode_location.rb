@@ -4,7 +4,7 @@ class BarcodeLocation < ActiveRecord::Base
 
   def as_json(options={})
     super(
-      :only => [:id, :name, :geom, :accuracy]
+      :only => [:id, :name, :accuracy, :geom]
     )
   end
 

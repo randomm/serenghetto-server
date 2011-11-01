@@ -6,6 +6,7 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "active_resource/railtie"
 require "sprockets/railtie"
+require 'active_record/connection_adapters/postgis_adapter/railtie'
 # require "rails/test_unit/railtie"
 
 if defined?(Bundler)
@@ -15,7 +16,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-module CodeName
+module Serenghetto
   class Application < Rails::Application
 
     # don't generate RSpec tests for views and helpers

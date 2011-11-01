@@ -40,9 +40,12 @@ gem "rails-footnotes", ">= 3.7", :group => :development
 gem 'pg', :require => 'pg'
 
 # add spatial adapter
-gem 'spatial_adapter', :git => 'git://github.com/randomm/spatial_adapter.git'
-#gem "spatial_adapter", ">=1.3.1"
-# gem "georuby"
+#gem 'spatial_adapter', :git => 'git://github.com/randomm/spatial_adapter.git'
+
+# add rgeo
+gem 'rgeo'
+gem 'rgeo-geojson'
+gem 'activerecord-postgis-adapter'
 
 # add cancan
 gem "cancan", ">=1.6.6"

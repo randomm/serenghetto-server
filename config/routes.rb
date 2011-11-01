@@ -1,4 +1,4 @@
-CodeName::Application.routes.draw do
+Serenghetto::Application.routes.draw do
   #get \"users\/show\"
 
   root :to => "home#index"

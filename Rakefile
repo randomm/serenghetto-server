@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-CodeName::Application.load_tasks
+Serenghetto::Application.load_tasks

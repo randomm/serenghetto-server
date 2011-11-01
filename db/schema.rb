@@ -14,12 +14,12 @@
 ActiveRecord::Schema.define(:version => 20111024103105) do
 
   create_table "barcode_locations", :force => true do |t|
-    t.integer  "barcode_id",                      :null => false
-    t.integer  "user_id",                         :null => false
+    t.integer  "barcode_id",                                                :null => false
+    t.integer  "user_id",                                                   :null => false
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.point    "geom",             :limit => nil,                 :srid => 4326, :with_z => true
+    t.spatial  "geom",             :limit => {:srid=>4326, :type=>"point"}
     t.float    "accuracy"
     t.datetime "device_timestamp"
   end
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(:version => 20111024103105) do
   create_table "user_locations", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.point    "geom",        :limit => nil, :null => false, :srid => 4326, :with_z => true
+    t.spatial  "geom",        :limit => {:srid=>4326, :type=>"point"}
     t.integer  "user_id"
     t.text     "description"
   end

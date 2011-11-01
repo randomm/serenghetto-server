@@ -1,5 +1,7 @@
 require 'factory_girl'
 
+#fac = RGeo::Cartesian.factory
+
 FactoryGirl.define do
   factory :user do
     sequence :email do |n| 
@@ -21,7 +23,7 @@ FactoryGirl.define do
     b.name 'Test location'
     b.association :user
     b.association :barcode
-    b.geom Point.from_x_y(24.523424, 61.12345, 4326)
+#    b.geom Point.from_x_y(24.523424, 61.12345, 4326)
     b.device_timestamp Time.now
     b.accuracy 1.0
   end
