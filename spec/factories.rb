@@ -18,6 +18,7 @@ FactoryGirl.define do
   end
 
   factory :barcode_location do |b|
+    b.name 'Test location'
     b.association :user
     b.association :barcode
     b.geom Point.from_x_y(24.523424, 61.12345, 4326)
