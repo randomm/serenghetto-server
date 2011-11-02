@@ -28,4 +28,4 @@ Feature: Add new barcode
     When I request that barcode
     Then the response status should be "200"
     And response JSON has valid schema
-    And barcode has location information attached
+    And barcode has location and user information attached

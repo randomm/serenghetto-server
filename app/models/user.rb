@@ -7,19 +7,16 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :authentication_token
 
   # set up relationships to other models
-#  has_one :user_location, :class_name => 'BarcodeLocation', :order => 'id DESC'
-#  has_many :user_locations
   has_many :barcodes
-#  has_many :barcode_locations, :through => :barcodes
 
-#  def ensure_authentication_token!   
-#    reset_authentication_token! if authentication_token.blank?   
-#  end 
-
-  def as_json(options={})
-    super(
-      :only => [:id, :email, :authentication_token]
-    )
+  # set to act as API for JSON responses
+  acts_as_api
+  
+  api_accessible :default do | t |
+    t.add :email
+    t.add :id
+    t.add :name
+    t.add :authentication_token
   end
   
 end

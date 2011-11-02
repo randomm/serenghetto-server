@@ -72,22 +72,13 @@ class BarcodeController < ApplicationController
   end
   
   def show
-    meta_data = { 
-      :message => "Requested barcode information attached."
-    }
-
-    @barcodes = Barcode.where(:id => params[:id]) # to get an array for render_for_api
-
-    @exterior = {
-      :message => "test", 
+    response = {
+      :message => "Single barcode with location and user information.", 
       :body => {}
     }
-    
-    return render_for_api :default, :json => @barcodes, :root => :entries, :parent_hash => @exterior, :node => :body
-
-
+    @barcodes = Barcode.where(:id => params[:id]) # to get an array for render_for_api
+    return render_for_api :default, :json => @barcodes, :root => :entries, :parent_hash => response, :node => :body
   end
-  
   
   private
   def notcreated

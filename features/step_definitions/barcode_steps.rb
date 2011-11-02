@@ -77,7 +77,8 @@ When /^I request that barcode$/ do
   get '/api/barcodes/'+@barcode_id.to_s
 end
 
-Then /^barcode has location information attached$/ do
+Then /^barcode has location and user information attached$/ do
   body = JSON.parse(last_response.body)['body']
   assert body['entries'][0].has_key?('location').should be_true
+  assert body['entries'][0].has_key?('user').should be_true
 end
