@@ -22,7 +22,7 @@ class BarcodeController < ApplicationController
         @barcode_location = BarcodeLocation.create({
           :barcode_id => @barcode.id,
           :user_id => current_user.id,
-          :geom => Point.from_x_y(params[:location][:longitude].to_f, params[:location][:latitude].to_f, 4326),
+          :geom => RGeo::Geos.factory.point(params[:location][:longitude].to_f, params[:location][:latitude].to_f),
           :device_timestamp => Time.at(params[:location][:timestamp].to_i),
           :accuracy => params[:location][:accuracy]
         })
@@ -72,15 +72,20 @@ class BarcodeController < ApplicationController
   end
   
   def show
-    barcode = Barcode.find(params[:id])
-
-    # return to client
-    return render :status => 200, :json => {
-      :message => "Requested barcode information attached.", 
-      :body => { 
-        :entries => [barcode]
-      }
+    meta_data = { 
+      :message => "Requested barcode information attached."
     }
+
+    @barcodes = Barcode.where(:id => params[:id]) # to get an array for render_for_api
+
+    @exterior = {
+      :message => "test", 
+      :body => {}
+    }
+    
+    return render_for_api :default, :json => @barcodes, :root => :entries, :parent_hash => @exterior, :node => :body
+
+
   end
   
   

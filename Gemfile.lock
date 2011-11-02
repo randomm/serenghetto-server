@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/randomm/acts_as_api.git
+  revision: a85a2c43e64c1fdf5aee081331edf39430c55850
+  specs:
+    acts_as_api (0.3.10)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      rack (>= 1.1.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -241,6 +250,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-postgis-adapter
+  acts_as_api!
   cancan (>= 1.6.6)
   capybara (>= 1.1.1)
   coffee-rails (~> 3.1.0)

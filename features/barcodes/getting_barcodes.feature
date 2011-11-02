@@ -29,4 +29,3 @@ Feature: Add new barcode
     Then the response status should be "200"
     And response JSON has valid schema
     And barcode has location information attached
-    Then I debug

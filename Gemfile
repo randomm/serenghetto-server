@@ -47,6 +47,9 @@ gem 'rgeo'
 gem 'rgeo-geojson'
 gem 'activerecord-postgis-adapter'
 
+# add acts_as_api for easy json responses
+gem 'acts_as_api', :git => 'git://github.com/randomm/acts_as_api.git'
+
 # add cancan
 gem "cancan", ">=1.6.6"
 
