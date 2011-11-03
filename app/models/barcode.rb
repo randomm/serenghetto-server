@@ -28,16 +28,4 @@ class Barcode < ActiveRecord::Base
     return barcodes
   end
 
-#  def as_json(options={})
-#    super(
-#      :only => [:id, :name, :code],
-#      :include => :barcode_locations,
-#      :include => :user
-#    )
-#  end
-  
-#  def location
-#    BarcodeLocation.where(:barcode_id => self.id).last
-#  end
-
 end

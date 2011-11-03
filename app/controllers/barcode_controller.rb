@@ -22,7 +22,7 @@ class BarcodeController < ApplicationController
         @barcode_location = BarcodeLocation.create({
           :barcode_id => @barcode.id,
           :user_id => current_user.id,
-          :geom => RGeo::Geos.factory.point(params[:location][:longitude].to_f, params[:location][:latitude].to_f),
+          :geom => Point.from_x_y(params[:location][:longitude].to_f, params[:location][:latitude].to_f, 4326),
           :device_timestamp => Time.at(params[:location][:timestamp].to_i),
           :accuracy => params[:location][:accuracy]
         })
