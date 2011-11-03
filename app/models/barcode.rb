@@ -14,7 +14,7 @@ class Barcode < ActiveRecord::Base
     t.add :name
     t.add :code
     t.add :location, :template => :default
-    t.add :user, :template => :default
+    t.add :user, :template => :public
   end
 
   def self.get_all_for_current_user(user_id)

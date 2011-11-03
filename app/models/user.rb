@@ -12,11 +12,16 @@ class User < ActiveRecord::Base
   # set to act as API for JSON responses
   acts_as_api
   
-  api_accessible :default do | t |
+  api_accessible :private do | t |
     t.add :email
     t.add :id
     t.add :name
     t.add :authentication_token
+  end
+  
+  api_accessible :public do | t |
+    t.add :email
+    t.add :name
   end
   
 end
