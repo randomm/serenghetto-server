@@ -43,9 +43,9 @@ gem 'pg', :require => 'pg'
 #gem 'spatial_adapter', :git => 'git://github.com/randomm/spatial_adapter.git'
 
 # add rgeo
-gem 'rgeo', :require => 'rgeo'
+gem 'rgeo'
 gem 'rgeo-geojson'
-gem 'activerecord-postgis-adapter'
+gem 'activerecord-postgis-adapter', :require => 'activerecord-postgis-adapter'
 
 # add acts_as_api for easy json responses
 gem 'acts_as_api', :git => 'git://github.com/randomm/acts_as_api.git'
