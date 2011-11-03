@@ -43,7 +43,7 @@ gem 'pg', :require => 'pg'
 #gem 'spatial_adapter', :git => 'git://github.com/randomm/spatial_adapter.git'
 
 # add rgeo
-gem 'rgeo'
+gem 'rgeo', :require => 'rgeo'
 gem 'rgeo-geojson'
 gem 'activerecord-postgis-adapter'
 
