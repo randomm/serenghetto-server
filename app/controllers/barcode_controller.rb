@@ -46,16 +46,12 @@ class BarcodeController < ApplicationController
   end
   
   def user_barcodes
-    @barcodes = Barcode.get_all_for_current_user(current_user.id)
-#    authorize! :user_barcodes, @barcodes
-
-    # return to client
-    return render :status => 200, :json => {
-      :message => "Complete list of barcodes for current user.", 
-      :body => { 
-        :entries => @barcodes
-      }
+    response = {
+      :message => "All barcodes in the system.", 
+      :body => {}
     }
+    @barcodes = Barcode.user_barcodes(current_user.id)
+    return render_for_api :default, :status => 200, :json => @barcodes, :root => :entries, :parent_hash => response, :node => :body
   end
   
   def index

@@ -17,15 +17,8 @@ class Barcode < ActiveRecord::Base
     t.add :user, :template => :public
   end
 
-  def self.get_all_for_current_user(user_id)
-    if user_id == nil 
-      return nil
-    end
-    barcodes = Barcode.where(:user_id => user_id)
-    barcodes.each do | bc |
-      bc['location'] = BarcodeLocation.where(:barcode_id => bc['id'])
-    end
-    return barcodes
+  def self.user_barcodes(user_id=nil)
+    self.where(:user_id => user_id)
   end
 
 end

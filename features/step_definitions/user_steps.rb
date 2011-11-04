@@ -15,7 +15,7 @@ end
 
 # User == nil would probably be better?
 Then /^I should be already signed in$/ do
-  And %{I should see "Logout"}
+  step %{I should see "Logout"}
 end
 
 # Separate "Signed up as" (Just insert the user to the variables) and "I login through the login screen" (Fill in the login form)
