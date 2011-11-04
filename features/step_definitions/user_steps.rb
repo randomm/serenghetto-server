@@ -20,14 +20,14 @@ end
 
 # Separate "Signed up as" (Just insert the user to the variables) and "I login through the login screen" (Fill in the login form)
 Given /^I am signed up as "(.*)\/(.*)"$/ do |email, password|
-  Given %{I am not logged in}
-  When %{I go to the sign up page}
-  And %{I fill in "Email" with "#{email}"}
-  And %{I fill in "Password" with "#{password}"}
-  And %{I fill in "Password confirmation" with "#{password}"}
-  And %{I press "Sign up"}
-  Then %{I should see "You have signed up successfully. If enabled, a confirmation was sent to your e-mail."}
-  And %{I am logout}
+  step %{I am not logged in}
+  step %{I go to the sign up page}
+  step %{I fill in "Email" with "#{email}"}
+  step %{I fill in "Password" with "#{password}"}
+  step %{I fill in "Password confirmation" with "#{password}"}
+  step %{I press "Sign up"}
+  step %{I should see "You have signed up successfully. If enabled, a confirmation was sent to your e-mail."}
+  step %{I am logout}
 end
 
 # /sign_out logs out the user instantly?
@@ -37,54 +37,54 @@ end
 
 # "I am not logged in" sounds better
 Given /^I am logout$/ do
-  Given %{I sign out}
+  step %{I sign out}
 end
 
 # User == nil ? ok : @user = nil
 Given /^I am not logged in$/ do
-  Given %{I sign out}
+  step %{I sign out}
 end
 
 # Duplicate.. same thing as above.
 When /^I sign in as "(.*)\/(.*)"$/ do |email, password|
-  Given %{I am not logged in}
-  When %{I go to the sign in page}
-  And %{I fill in "Email" with "#{email}"}
-  And %{I fill in "Password" with "#{password}"}
-  And %{I press "Sign in"}
+  step %{I am not logged in}
+  step %{I go to the sign in page}
+  step %{I fill in "Email" with "#{email}"}
+  step %{I fill in "Password" with "#{password}"}
+  step %{I press "Sign in"}
 end
 
 # Check if signed in should check if the user is signed in, not if there's some text on screen (That can be tested with "I should see..")
 Then /^I should be signed in$/ do
-  Then %{I should see "Signed in successfully."}
+  step %{I should see "Signed in successfully."}
 end
 
 # ?
 When /^I return next time$/ do
-  And %{I go to the home page}
+  step %{I go to the home page}
 end
 
 Then /^I should be signed out$/ do
-  And %{I should see "Sign up"}
-  And %{I should see "Login"}
-  And %{I should not see "Logout"}
+  step %{I should see "Sign up"}
+  step %{I should see "Login"}
+  step %{I should not see "Logout"}
 end
 
 When /^I change old password "([^"]*)" to "([^"]*)"$/ do |old_password, new_password|
-  And %{I fill in "Password" with "#{new_password}"}
-  And %{I fill in "Password confirmation" with "#{new_password}"}
-  And %{I fill in "Current password" with "#{old_password}"}
-  And %{I press "Update"}
+  step %{I fill in "Password" with "#{new_password}"}
+  step %{I fill in "Password confirmation" with "#{new_password}"}
+  step %{I fill in "Current password" with "#{old_password}"}
+  step %{I press "Update"}
 end
 
 Then /^new password should be "([^"]*)"$/ do |new_password|
   # test this via changing user name with new password
-  When %{I follow "Edit account"}
-  And %{I fill in "Name" with "baz"}
-  And %{I fill in "Current password" with "#{new_password}"}
-  And %{I press "Update"}
-  And %{I follow "Edit account"}
-  Then %{the "Name" field should equal "baz"}
+  step %{I follow "Edit account"}
+  step %{I fill in "Name" with "baz"}
+  step %{I fill in "Current password" with "#{new_password}"}
+  step %{I press "Update"}
+  step %{I follow "Edit account"}
+  step %{the "Name" field should equal "baz"}
 end
 
 When /^I post my email "([^"]*)" and password "([^"]*)" to "([^"]*)"$/ do |arg1, arg2, arg3|
@@ -92,8 +92,8 @@ When /^I post my email "([^"]*)" and password "([^"]*)" to "([^"]*)"$/ do |arg1,
 end
 
 Given /^I log in$/ do
-  And %{I post my email "#{@user.email}" and password "#{@user.password}" to "/api/session"}
-  Then %{I should be logged in}
+  step %{I post my email "#{@user.email}" and password "#{@user.password}" to "/api/session"}
+  step %{I should be logged in}
 end
 
 Given /^I am a registered user$/ do

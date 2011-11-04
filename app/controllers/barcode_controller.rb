@@ -64,7 +64,7 @@ class BarcodeController < ApplicationController
       :body => {}
     }
     @barcodes = Barcode.all() # to get an array for render_for_api
-    return render_for_api :default, :json => @barcodes, :root => :entries, :parent_hash => response, :node => :body
+    return render_for_api :default, :status => 200, :json => @barcodes, :root => :entries, :parent_hash => response, :node => :body
   end
   
   def show
@@ -73,7 +73,7 @@ class BarcodeController < ApplicationController
       :body => {}
     }
     @barcodes = Barcode.where(:id => params[:id]) # to get an array for render_for_api
-    return render_for_api :default, :json => @barcodes, :root => :entries, :parent_hash => response, :node => :body
+    return render_for_api :default, :status => 200, :json => @barcodes, :root => :entries, :parent_hash => response, :node => :body
   end
   
   private

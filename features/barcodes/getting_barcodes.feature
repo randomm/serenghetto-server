@@ -3,6 +3,7 @@ Feature: Add new barcode
   A user
   Should be able to view their own and other players' barcode scans
 
+  @dev
   Scenario: Logged in user lists their barcodes
     Given I am a registered user
     And I accept JSON
@@ -21,7 +22,6 @@ Feature: Add new barcode
     And response JSON has valid schema
     And response has 127 barcodes
     
-  @dev
   Scenario: User gets one barcode together with location data
     Given I accept JSON
     And there is a barcode with location data in the system
