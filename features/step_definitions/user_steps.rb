@@ -116,3 +116,14 @@ Then /^I should not be signed in$/ do
   body = JSON.parse(last_response.body)["body"]
   body["user"].has_key?("token").should be_false
 end
+
+When /^I update my location in the system with following data:$/ do |table|
+  post '/api/'+@user_id.to_s+'/location', table.hashes.first
+end
+
+Then /^user location should be updated to:$/ do |table|
+  body = JSON.parse(last_response.body)["body"]
+  body["user"]["location"]["geom"]["x"].to_f.should == table.hashes.first["user[location][longitude]"].to_f
+  body["user"]["location"]["geom"]["y"].to_f.should == table.hashes.first["user[location][latitude]"].to_f
+end
+

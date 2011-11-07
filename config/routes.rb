@@ -19,6 +19,8 @@ Serenghetto::Application.routes.draw do
   scope "/api" do
     resources :barcode, :only => [:create]
     match ':user_id/barcodes' => 'barcode#user_barcodes', :only => :get
+    match ':user_id/location' => 'users#set_location', :only => :post
+    match ':user_id/location' => 'users#get_location', :only => :get
     match '/barcodes' => 'barcode#index', :only => :get
     match '/barcodes/:id' => 'barcode#show', :only => :get
   end
