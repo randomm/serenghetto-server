@@ -17,6 +17,7 @@ Feature: Add new barcode
         |test name|0123456789|
       Then the response status should be "201"
       And response JSON has valid schema
+      And response has all required fields
       
     Scenario: User posts new barcode via HTTP API with name and location but no code
       Given I accept JSON
@@ -33,4 +34,5 @@ Feature: Add new barcode
         |test name|0123456789|1.0|61.12345|24.12345|1319193664|
       Then the response status should be "201"
       And response JSON has valid schema
+      And response has all required fields
       

@@ -82,3 +82,10 @@ Then /^barcode has location and user information attached$/ do
   assert body['entries'][0].has_key?('location').should be_true
   assert body['entries'][0].has_key?('user').should be_true
 end
+
+Then /^response has all required fields$/ do
+  body = JSON.parse(last_response.body)['body']
+  assert body['barcode'].has_key?('score').should be_true
+  assert body['barcode'].has_key?('code').should be_true
+  assert body['barcode'].has_key?('id').should be_true
+end

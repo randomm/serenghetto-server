@@ -31,8 +31,9 @@ class BarcodeController < ApplicationController
     else
       return notcreated
     end
-
-    debugger
+    
+    # calculate score
+    Score.set_score(@barcode)
 
     # return to client
     return render :status => 201, :json => {
@@ -41,7 +42,8 @@ class BarcodeController < ApplicationController
         :barcode => { 
           :id => @barcode.id,
           :name => @barcode.name, 
-          :code => @barcode.code 
+          :code => @barcode.code,
+          :score => @barcode.score 
         }
       }
     }
