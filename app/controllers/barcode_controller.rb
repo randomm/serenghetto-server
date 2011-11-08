@@ -28,21 +28,23 @@ class BarcodeController < ApplicationController
         })
         message += "Location information saved."
       end
-
-      # return to client
-      return render :status => 201, :json => {
-        :message => message, 
-        :body => { 
-          :barcode => { 
-            :id => @barcode.id,
-            :name => @barcode.name, 
-            :code => @barcode.code 
-          }
-        }
-      }
     else
       return notcreated
     end
+
+    debugger
+
+    # return to client
+    return render :status => 201, :json => {
+      :message => message, 
+      :body => { 
+        :barcode => { 
+          :id => @barcode.id,
+          :name => @barcode.name, 
+          :code => @barcode.code 
+        }
+      }
+    }
   end
   
   def user_barcodes
@@ -78,6 +80,10 @@ class BarcodeController < ApplicationController
       :message => "Error, barcode not added!",
       :body => {}
     }
+  end
+  
+  def get_score
+    
   end
        
 end

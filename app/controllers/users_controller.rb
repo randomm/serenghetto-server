@@ -43,5 +43,8 @@ class UsersController < ApplicationController
   
   def get_location
   end
-
+  
+  def get_score
+  end
+  
 end
