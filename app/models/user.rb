@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   
   api_accessible :public do | t |
     t.add :email
+    t.add :id
     t.add :name
     t.add :location, :template => :public
   end
