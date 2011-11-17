@@ -16,6 +16,7 @@ class Barcode < ActiveRecord::Base
     t.add :name
     t.add :code
     t.add :id
+    t.add :updated_at
     t.add :location, :template => :default
     t.add :user, :template => :public
     t.add :score, :template => :default

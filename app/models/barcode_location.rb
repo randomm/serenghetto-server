@@ -6,7 +6,7 @@ class BarcodeLocation < ActiveRecord::Base
   
   api_accessible :default do | t |
     t.add :name
-    t.add :updated_at
+    t.add :device_timestamp
     t.add :accuracy
     t.add :geom
   end
