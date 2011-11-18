@@ -15,7 +15,7 @@ class Score < ActiveRecord::Base
     unless score_instance
       Score.create({
         :score => score,
-        :barcode_id => @barcode_id
+        :barcode_id => barcode.id
       })
     else
       score_instance.score = score
