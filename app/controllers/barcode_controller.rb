@@ -23,7 +23,7 @@ class BarcodeController < ApplicationController
           :barcode_id => @barcode.id,
           :user_id => current_user.id,
           :geom => Point.from_x_y(params[:location][:longitude].to_f, params[:location][:latitude].to_f, 4326),
-          :device_timestamp => Time.at(params[:location][:timestamp].to_i),
+          :device_timestamp => Time.at((params[:location][:timestamp].to_i/1000)),
           :accuracy => params[:location][:accuracy]
         })
         message += "Location information saved."

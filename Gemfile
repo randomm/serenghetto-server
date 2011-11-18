@@ -49,3 +49,6 @@ gem 'jsonpath', :group => :test
 # install heroku gem
 gem "heroku"
 
+# install spatialdb gem
+gem "spacialdb"
+

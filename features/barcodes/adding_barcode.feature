@@ -31,7 +31,7 @@ Feature: Add new barcode
       Given I accept JSON
       When I send a new barcode via HTTP API with the following:
         |barcode[name]|barcode[code]|location[accuracy]|location[longitude]|location[latitude]|location[timestamp]|
-        |test name|0123456789|1.0|61.12345|24.12345|1319193664|
+        |test name|0123456789|1.0|61.12345|24.12345|1319193664123|
       Then the response status should be "201"
       And response JSON has valid schema
       And response has all required fields
