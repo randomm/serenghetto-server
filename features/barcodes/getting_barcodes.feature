@@ -3,7 +3,6 @@ Feature: Add new barcode
   A user
   Should be able to view their own and other players' barcode scans
 
-  @dev
   Scenario: Logged in user lists their barcodes
     Given I am a registered user
     And I accept JSON

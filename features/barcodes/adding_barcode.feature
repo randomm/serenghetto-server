@@ -36,3 +36,24 @@ Feature: Add new barcode
       And response JSON has valid schema
       And response has all required fields
       
+    Scenario: User adds a code that already exists in the system 3 times and new score is calculated correctly
+      Given I accept JSON
+      When there are 3 barcodes with the same code 09876543210987654321 in the system
+      And I send a new barcode via HTTP API with the following:
+        |barcode[name]|barcode[code]|location[accuracy]|location[longitude]|location[latitude]|location[timestamp]|
+        |test name|09876543210987654321|1.0|61.12345|24.12345|1319193664123|
+      Then the response status should be "201"
+      And response JSON has valid schema
+      And new barcode has score "25.0"
+    
+    Scenario: User adds a code that already exists in the system 14 times and new score is calculated correctly
+      Given I accept JSON
+      When there are 14 barcodes with the same code 09876543210987654321 in the system
+      And I send a new barcode via HTTP API with the following:
+        |barcode[name]|barcode[code]|location[accuracy]|location[longitude]|location[latitude]|location[timestamp]|
+        |test name|09876543210987654321|1.0|61.12345|24.12345|1319193664123|
+      Then the response status should be "201"
+      And response JSON has valid schema
+      And new barcode has score "6.0"
+    
+      

@@ -26,5 +26,5 @@ FactoryGirl.define do
     b.device_timestamp Time.now
     b.accuracy 1.0
   end
-
+  
 end

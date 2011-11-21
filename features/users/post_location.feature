@@ -3,7 +3,6 @@ Feature: Post user location
   A user
   Should be able to post their location to the system
 
-  @dev
   Scenario: User posts their location to the application via JSON
     Given I am a user named "foo" with an email "user@test.com" and password "please"
     And I accept JSON

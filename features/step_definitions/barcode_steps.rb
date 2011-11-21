@@ -89,3 +89,15 @@ Then /^response has all required fields$/ do
   assert body['barcode'].has_key?('code').should be_true
   assert body['barcode'].has_key?('id').should be_true
 end
+
+When /^there are (\d+) barcodes with the same code (\d+) in the system$/ do |n, code|
+  step %{I should be logged in}
+  n.to_i.times do 
+    Factory.create(:barcode, :user => User.find(@user_id), :code => code )
+  end
+end
+
+Then /^new barcode has score "([^"]*)"$/ do |arg1|
+  body = JSON.parse(last_response.body)['body']
+  assert body['barcode']['score']['score'].to_f.round.should == arg1.to_f.round
+end
