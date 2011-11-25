@@ -36,17 +36,12 @@ class BarcodeController < ApplicationController
     Score.set_score(@barcode)
 
     # return to client
-    return render :status => 201, :json => {
+    response = {
       :message => message, 
-      :body => { 
-        :barcode => { 
-          :id => @barcode.id,
-          :name => @barcode.name, 
-          :code => @barcode.code,
-          :score => @barcode.score 
-        }
-      }
+      :body => {}
     }
+    @barcodes = Barcode.where(:id => params[:id]) # to get an array for render_for_api
+    return render_for_api :default, :status => 201, :json => @barcode, :root => :barcode, :parent_hash => response, :node => :body
   end
   
   def user_barcodes
