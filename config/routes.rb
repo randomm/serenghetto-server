@@ -25,6 +25,11 @@ Serenghetto::Application.routes.draw do
     match '/barcodes/:id' => 'barcode#show', :only => :get
   end
   
+  # for overlays
+  scope "/api" do
+    match '/overlays' => 'overlay#by_viewport', :only => :get
+  end
+  
   # API routing for devise
 #  devise_scope :user do
 #    post "/api/session", :to => "sessions#create"
