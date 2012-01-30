@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120130101537) do
+ActiveRecord::Schema.define(:version => 20120130111103) do
 
   create_table "barcode_locations", :force => true do |t|
     t.integer  "barcode_id",                      :null => false
@@ -48,6 +48,12 @@ ActiveRecord::Schema.define(:version => 20120130101537) do
   end
 
   add_index "tile_y_coordinates", ["geom"], :name => "index_tile_y_coordinates_on_geom", :spatial => true
+
+  create_table "tiles", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.polygon  "geom",       :limit => nil, :null => false, :srid => 4326, :with_z => true
+  end
 
   create_table "user_locations", :force => true do |t|
     t.datetime "created_at"

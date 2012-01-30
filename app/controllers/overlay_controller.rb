@@ -1,0 +1,2 @@
+class OverlayController < ApplicationController
+end
