@@ -22,15 +22,29 @@ class OverlayController < ApplicationController
     # first calculate number of tiles that should be in the db
     # start with getting the latitude for the top and bottom rows
     # for the given viewport
-    lat1_rows = TileYCoordinate.nearest_tile_rows(lat1)
-    lat2_rows = TileYCoordinate.nearest_tile_rows(lat2)
-    top_row_geom = lat1 > lat2 ? (lat1_rows[0].geom.y > lat1_rows[1].geom.y ? lat1_rows[0].geom : lat1_rows[1].geom) : (lat2_rows[0].geom.y > lat2_rows[1].geom.y ? lat2_rows[0].geom : lat2_rows[1].geom)
-    bottom_row_geom = lat1 < lat2 ? (lat1_rows[0].geom.y < lat1_rows[1].geom.y ? lat1_rows[0].geom : lat1_rows[1].geom) : (lat2_rows[0].geom.y < lat2_rows[1].geom.y ? lat2_rows[0].geom : lat2_rows[1].geom)
+    tile_y_rows = TileYCoordinate.get_rows(lat1, lat2)
 
-    # then calculate the longitude for the leftmost column
-#    first_row_lon = lon1 < lon2 ? (lon1 / APP_CONFIG.tile_width).abs.floor * APP_CONFIG.tile_width + bottom_row_geom.x
+    # loop through rows for the viewport
+    # check whether tile exists, if not create
+    low_lon = lon1 < lon2 ? lon1 : lon2
+    high_lon = lon1 > lon2 ? lon1 : lon2
+    tile_y_rows.each do | row |
+      tmp_lon = (low_lon / APP_CONFIG.tile_width).floor * APP_CONFIG.tile_width - row.x
+      tmp_lat = row.y
+      while (tmp_lon < high_lon + APP_CONFIG.tile_width)
+        
+        string_id = tmp_lon.to_s + "|" + tmp_lat.to_s
+        
+        # use string_id to query the tiles table
+        # if tile does not exist, create it
+        
+        tmp_lon += APP_CONFIG.tile_width
+      end
+      tile_id = tmp_lon.to_s+tmp_lat
+      
+#      tile = Tile.by_id(
+    end
 
-#    debugger
       
     # if we have the tiles, then just output the json
     

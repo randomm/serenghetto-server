@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120203125708) do
+ActiveRecord::Schema.define(:version => 20120207132730) do
 
   create_table "barcode_locations", :force => true do |t|
     t.integer  "barcode_id",                      :null => false
@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(:version => 20120203125708) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.point    "geom",             :limit => nil,                 :srid => 4326
     t.float    "accuracy"
     t.datetime "device_timestamp"
+    t.point    "geom",             :limit => nil,                 :srid => 4326
   end
 
   add_index "barcode_locations", ["geom"], :name => "index_barcode_locations_on_geom", :spatial => true
@@ -42,13 +42,14 @@ ActiveRecord::Schema.define(:version => 20120203125708) do
   end
 
   create_table "tile_y_coordinates", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.float    "x",          :null => false
     t.float    "y",          :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tiles", :force => true do |t|
+    t.string   "string_id",                 :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.polygon  "geom",       :limit => nil, :null => false, :srid => 4326, :with_z => true
@@ -57,9 +58,9 @@ ActiveRecord::Schema.define(:version => 20120203125708) do
   create_table "user_locations", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.point    "geom",        :limit => nil, :srid => 4326
     t.integer  "user_id"
     t.text     "description"
+    t.point    "geom",        :limit => nil, :srid => 4326
   end
 
   add_index "user_locations", ["geom"], :name => "index_user_locations_on_geom", :spatial => true

@@ -14,4 +14,11 @@ class Tile < ActiveRecord::Base
       " % [ box[:lat1], box[:lon1], box[:lat2], box[:lon1], box[:lat2], box[:lon2], box[:lat1], box[:lon2], box[:lat1], box[:lon1] ])
   end
 
+  def self.by_id(id=nil)
+    unless id
+      return []
+    end
+    self.where(:id => id)
+  end
+
 end
