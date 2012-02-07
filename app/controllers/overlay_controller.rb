@@ -28,9 +28,9 @@ class OverlayController < ApplicationController
     bottom_row_geom = lat1 < lat2 ? (lat1_rows[0].geom.y < lat1_rows[1].geom.y ? lat1_rows[0].geom : lat1_rows[1].geom) : (lat2_rows[0].geom.y < lat2_rows[1].geom.y ? lat2_rows[0].geom : lat2_rows[1].geom)
 
     # then calculate the longitude for the leftmost column
-    first_row_lon = lon1 < lon2 ? (lon1 / APP_CONFIG.tile_width).abs.floor
+#    first_row_lon = lon1 < lon2 ? (lon1 / APP_CONFIG.tile_width).abs.floor * APP_CONFIG.tile_width + bottom_row_geom.x
 
-    debugger
+#    debugger
       
     # if we have the tiles, then just output the json
     

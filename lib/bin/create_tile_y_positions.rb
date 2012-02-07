@@ -46,12 +46,16 @@ while lat <= 80 do # create positions between 80 degrees south and 80 degrees no
   if cnt % 2 == 0
     lat += y_deg_diff*1.5
     TileYCoordinate.create({
-      :geom => Point.from_x_y(0.0, lat, 4326)
+      :x => 0.0,
+      :y => lat
+#      :geom => Point.from_x_y(0.0, lat, 4326)
     })
   else
     lat += y_deg_diff*1.5
     TileYCoordinate.create({
-      :geom => Point.from_x_y(TILE_WIDTH/2, lat, 4326)
+      :x => TILE_WIDTH/2,
+      :y => lat
+#      :geom => Point.from_x_y(TILE_WIDTH/2, lat, 4326)
     })
   end
   cnt += 1
